@@ -1,4 +1,5 @@
 const path = require('path');
+const htmlWebPackPlugin = require('html-webpack-plugin'); //Importando plugin webpack
 
 module.exports = {
     mode: 'development', //Modo de desenvolvimento
@@ -10,6 +11,12 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'], //Extensões que ele consiguira transpilar adicionamos .jsx
     },
+    plugins: [
+        new htmlWebPackPlugin({ //Criando e passando template para plguin WebPack, apenas para melhorar fluxo da aplicação
+            template: path.resolve(__dirname, 'public', 'index.html')
+        })
+
+    ],
     module: { //Como lidar com os arq transpilados
         rules: [ //Array de regras para cada tipo de arquivos
             {
