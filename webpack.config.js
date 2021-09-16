@@ -11,6 +11,9 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'], //Extensões que ele consiguira transpilar adicionamos .jsx
     },
+    devServer: {
+        contentBase: path.resolve(__dirname, 'public'),//Configurando webpack server, passando diretorio que ficam nossa pasta onde tem nosso arq estático da aplicação
+    },
     plugins: [
         new htmlWebPackPlugin({ //Criando e passando template para plguin WebPack, apenas para melhorar fluxo da aplicação
             template: path.resolve(__dirname, 'public', 'index.html')
