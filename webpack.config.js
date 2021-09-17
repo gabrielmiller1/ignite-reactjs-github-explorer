@@ -3,6 +3,7 @@ const htmlWebPackPlugin = require('html-webpack-plugin'); //Importando plugin we
 
 module.exports = {
     mode: 'development', //Modo de desenvolvimento
+    devtool: 'eval-source-map', //Configurando source map
     entry: path.resolve(__dirname, 'src', 'index.jsx'), //Entry= Qual arq principal da aplicação
     output: {
         path: path.resolve(__dirname, 'dist'), //Passando arq que geraremos com o webpack
@@ -11,8 +12,10 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'], //Extensões que ele consiguira transpilar adicionamos .jsx
     },
-    devServer: {
-        contentBase: path.resolve(__dirname, 'public'),//Configurando webpack server, passando diretorio que ficam nossa pasta onde tem nosso arq estático da aplicação
+    devServer: {//Configurando webpack server, passando diretorio que ficam nossa pasta onde tem nosso arq estático da aplicação.
+        static: {
+            directory: path.join(__dirname, 'public')
+        }
     },
     plugins: [
         new htmlWebPackPlugin({ //Criando e passando template para plguin WebPack, apenas para melhorar fluxo da aplicação
