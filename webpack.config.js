@@ -32,6 +32,11 @@ module.exports = {
                 exclude: /node_modules/, //Excluindo arquivos do node_modules
                 use: 'babel-loader', //Integração entre babel e o webpack
             },
+            {
+                test: /\.scss$/, //Expressão regular para verificar se e um arq scss
+                exclude: /node_modules/, //Excluindo arquivos do node_modules
+                use: [ 'style-loader', 'css-loader', 'sass-loader'] , //Integração entre babel e o webpack para transpilar scss
+            }
         ]
     }
 }
