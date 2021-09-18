@@ -7,13 +7,13 @@ const isDevelopment = process.env.NODE_ENV !== 'production'; //para declarar amb
 module.exports = {
     mode: 'development', //Modo de desenvolvimento
     devtool: isDevelopment ? 'eval-source-map' : 'source-map', //Configurando source map
-    entry: path.resolve(__dirname, 'src', 'index.jsx'), //Entry= Qual arq principal da aplicação
+    entry: path.resolve(__dirname, 'src', 'index.tsx'), //Entry= Qual arq principal da aplicação
     output: {
         path: path.resolve(__dirname, 'dist'), //Passando arq que geraremos com o webpack
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: ['.js', '.jsx'], //Extensões que ele consiguira transpilar adicionamos .jsx
+        extensions: ['.js', '.jsx', '.ts', '.tsx'], //Extensões que ele consiguira transpilar adicionamos .jsx ou .tsx
     },
     devServer: {//Configurando webpack server, passando diretorio que ficam nossa pasta onde tem nosso arq estático da aplicação.
         static: {
@@ -31,7 +31,7 @@ module.exports = {
     module: { //Como lidar com os arq transpilados
         rules: [ //Array de regras para cada tipo de arquivos
             {
-                test: /\.jsx$/, //Expressão regular para verificar se e um arq js ou não
+                test: /\.(j|t)sx$/, //Expressão regular para verificar se e um arq jsx ou tsx ou não
                 exclude: /node_modules/, //Excluindo arquivos do node_modules
                 use: {
                     loader: 'babel-loader', //Integração entre babel e o webpack
